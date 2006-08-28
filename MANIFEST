@@ -1,0 +1,28 @@
+CHANGES
+LICENSE
+MANIFEST
+Makefile.PL
+README
+
+# The module files
+lib/Module/Install/GetProgramLocations.pm
+
+# Tests
+t/basic.t
+t/versions.t
+t/dummy_program.pl
+
+# Module::Install extensions
+inc/ExtUtils/AutoInstall.pm
+inc/Module/Install.pm
+inc/Module/Install/AutoInstall.pm
+inc/Module/Install/Base.pm
+inc/Module/Install/Can.pm
+inc/Module/Install/Fetch.pm
+inc/Module/Install/Include.pm
+inc/Module/Install/Makefile.pm
+inc/Module/Install/Metadata.pm
+inc/Module/Install/Win32.pm
+inc/Module/Install/WriteAll.pm
+
+META.yml

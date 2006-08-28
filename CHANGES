@@ -1,0 +1,36 @@
+Version 0.3001: Mon Jun 6 2005
+- Fixed a bug in program type reporting
+
+Version 0.3000: Sun Feb 6 2005
+- Changed the semantics of non-interactive mode so that it always converts
+  relative program names to absolute and validates them.
+- Removed Get_GNU_Grep_Version and others. (Just use Get_GNU_Version instead.)
+- Checks that the user provides an argname now.
+- Improved the documentation
+
+Version 0.2000: Tue Dec 21 2004
+- Fixed version numbers, which were incompatible with some modules. (Thanks to
+  Tassilo von Parseval <tassilo.von.parseval@rwth-aachen.de> for the bug
+  report)
+- Program locations are taken from %Config if they exist
+- Added some new version functions (GNU make and g++)
+- Improved dialogs so that they show which version(s) of the program that
+  we're looking for.
+- Added a feature to force the use of an invalid program, if the user
+  specifies it twice in a row. This will prevent infinite loops in automated
+  testing. (Thanks to Barbie <barbie@missbarbell.co.uk> for bug report)
+
+Version 0.10.2:
+- Fixed a bug where the default program would not be tried if the value from
+  %Config failed.
+- Fixed a bug in the documentation about including the module, and fixed the
+  Get_...Version functions so that they will be automatically and implicitly
+  invoked by Module::Install
+
+Version 0.10.1: Thu Sep 16 2004
+- Fixed broken dependency specification in Makefile.PL
+- Fixed auto-import of dependencies for this extension
+
+Version 0.10.0: Wed Sep 15 2004
+- Initial version, ported from Mail::Mbox::MessageParser's old Makefile.PL.
+  Support for full path deduction and version checking.
