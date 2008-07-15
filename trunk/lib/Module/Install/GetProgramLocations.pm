@@ -1,6 +1,8 @@
 package Module::Install::GetProgramLocations;
 
 use strict;
+use 5.004;
+
 use Config;
 use Cwd;
 use Carp;
@@ -13,15 +15,15 @@ use vars qw( @ISA $VERSION @EXPORT );
 use Module::Install::Base;
 @ISA = qw( Module::Install::Base Exporter );
 
-@EXPORT = qw( &Get_GNU_Version
-              &Get_Bzip2_Version
+@EXPORT = qw( &get_gnu_version
+              &get_bzip2_version
             );
 
-$VERSION = sprintf "%d.%02d%02d", q/0.30.1/ =~ /(\d+)/g;
+$VERSION = sprintf "%d.%02d%02d", q/0.30.2/ =~ /(\d+)/g;
 
 # ---------------------------------------------------------------------------
 
-sub Get_Program_Locations
+sub get_program_locations
 {
   my $self = shift;
   my %info = %{ shift @_ };
@@ -32,30 +34,28 @@ sub Get_Program_Locations
       unless defined $info{$program}{'argname'};
   }
 
-  # Module::Install says it requires perl 5.004
-  $self->requires( perl => '5.004' );
   $self->include_deps('Config',0);
   $self->include_deps('File::Spec',0);
   $self->include_deps('Sort::Versions',0);
   $self->include_deps('Cwd',0);
 
   my %user_specified_program_paths =
-    $self->_Get_User_Specified_Program_Locations(\%info);
+    $self->_get_user_specified_program_locations(\%info);
 
   if (keys %user_specified_program_paths)
   {
-    return $self->_Get_ARGV_Program_Locations(\%info,
+    return $self->_get_argv_program_locations(\%info,
       \%user_specified_program_paths);
   }
   else
   {
-    return $self->_Prompt_User_For_Program_Locations(\%info);
+    return $self->_prompt_user_for_program_locations(\%info);
   }
 }
 
 # ---------------------------------------------------------------------------
 
-sub _Get_User_Specified_Program_Locations
+sub _get_user_specified_program_locations
 {
   my $self = shift;
   my %info = %{ shift @_ };
@@ -94,7 +94,7 @@ sub _Get_User_Specified_Program_Locations
 
 # ---------------------------------------------------------------------------
 
-sub _Get_ARGV_Program_Locations
+sub _get_argv_program_locations
 {
   my $self = shift;
   my %info = %{ shift @_ };
@@ -125,7 +125,7 @@ sub _Get_ARGV_Program_Locations
     else
     {
       my ($is_valid,$type,$version) = 
-        $self->_Program_Version_Is_Valid($program_name,$full_path,\%info);
+        $self->_program_version_is_valid($program_name,$full_path,\%info);
       
       unless($is_valid)
       {
@@ -143,7 +143,7 @@ sub _Get_ARGV_Program_Locations
 
 # ---------------------------------------------------------------------------
 
-sub _Prompt_User_For_Program_Locations
+sub _prompt_user_for_program_locations
 {
   my $self = shift;
   my %info = %{ shift @_ };
@@ -210,7 +210,7 @@ sub _Prompt_User_For_Program_Locations
     else
     {
       my ($is_valid,$type,$version) = 
-        $self->_Program_Version_Is_Valid($program_name,$choice,\%info);
+        $self->_program_version_is_valid($program_name,$choice,\%info);
       
       if(!$is_valid)
       {
@@ -235,7 +235,7 @@ sub _Prompt_User_For_Program_Locations
 
 # ---------------------------------------------------------------------------
 
-sub _Program_Version_Is_Valid
+sub _program_version_is_valid
 {
   my $self = shift;
   my $program_name = shift;
@@ -252,7 +252,7 @@ sub _Program_Version_Is_Valid
 
       next TYPE unless defined $version;
 
-      if ($self->Version_Matches_Range($version,
+      if ($self->version_matches_range($version,
         $info{$program_name}{'types'}{$type}{'numbers'}))
       {
         return (1,$type,$version);
@@ -277,7 +277,7 @@ sub _Program_Version_Is_Valid
 
 # ---------------------------------------------------------------------------
 
-sub Version_Matches_Range
+sub version_matches_range
 {
   my $self = shift;
   my $version = shift;
@@ -345,7 +345,7 @@ sub _Make_Absolute
 
 # ---------------------------------------------------------------------------
 
-sub Get_GNU_Version
+sub get_gnu_version
 {
   my $self = shift;
   my $program = shift;
@@ -377,7 +377,7 @@ sub Get_GNU_Version
 
 # ---------------------------------------------------------------------------
 
-sub Get_Bzip2_Version
+sub get_bzip2_version
 {
   my $self = shift;
   my $program = shift;
@@ -396,9 +396,7 @@ sub Get_Bzip2_Version
 
 =head1 NAME
 
-Module::Install::GetProgramLocations - A Module::Install extension that allows
-the user to interactively specify the location of programs needed by the
-module to be installed
+Module::Install::GetProgramLocations - A Module::Install extension that allows the user to interactively specify the location of programs needed by the module to be installed
 
 
 =head1 SYNOPSIS
@@ -416,7 +414,7 @@ A simple example:
     'gzip'     => { default => 'gzip', argname => 'GZIP' },
   );
 
-  my %location_info = Get_Program_Locations(\%info);
+  my %location_info = get_program_locations(\%info);
 
   print "grep path is " . $location_info{'grep'}{'path'} . "\n";
 
@@ -425,7 +423,7 @@ A complex example showing all the bells and whistles:
   use inc::Module::Install;
   ...
   # User-defined get version program
-  sub Get_Solaris_Grep_Version
+  sub get_solaris_grep_version
   {
     my $program = shift;
 
@@ -442,16 +440,16 @@ A complex example showing all the bells and whistles:
     'grep'     => { default => 'grep', argname => 'GREP',
                     type => {
                       # Any GNU version higher than 2.1
-                      'GNU' =>     { fetch => \&Get_GNU_Version,
+                      'GNU' =>     { fetch => \&get_gnu_version,
                                      numbers => '[2.1,)', },
                       # Any solaris version
-                      'Solaris' => { fetch => \&Get_Solaris_Grep_Version,
+                      'Solaris' => { fetch => \&get_solaris_grep_version,
                                      numbers => '[0,)', },
                     },
                   },
   );
 
-  my %location_info = Get_Program_Locations(\%info);
+  my %location_info = get_program_locations(\%info);
 
   print "grep path is " . $location_info{'grep'}{'path'} . "\n";
   print "grep type is " . $location_info{'grep'}{'type'} . "\n";
@@ -499,11 +497,12 @@ anyway.
 
 =over 4
 
-=item %program_information = Get_Program_Locations(\%info)
+=item get_program_locations(E<lt>HASH REFE<gt>)
 
 This function takes as input a hash with information for the programs to be
-found. The keys are the program names (and can actually be anything). The
-values are named:
+found, and returns a hash representing program location data. The keys of the
+argument hash are the program names (and can actually be anything). The values
+are named:
 
 =over 2
 
@@ -549,7 +548,7 @@ implementation, returning undef when they fail.
 
 =back
 
-The return value for Get_Program_Locations is a hash whose keys are the same
+The return value for get_program_locations is a hash whose keys are the same
 as those of %info, and whose values are hashes having three values:
 
 =over 2
@@ -573,10 +572,10 @@ The version number of the program.
 =back
 
 
-=item $boolean = Version_Matches_Range($program_version, $range);
+=item version_matches_range(E<lit>PROGRAM VERSIONE<gt>, E<lt>RANGEE<gt>);
 
 This function takes a program version string and a version ranges specification
-and determines if the program version is in any of the ranges. For example
+and returns true if the program version is in any of the ranges. For example
 '1.2.3a' is in the second range of '[1.0,1.1) (1.2.3,)' because 1.2.3a is
 higher than 1.2.3, but less than infinity.
 
@@ -590,28 +589,31 @@ Feel free to submit new version functions for programs that you use.
 
 =over 4
 
-=item $version = Get_GNU_Version($path_to_program)
+=item $version = get_gnu_version(E<lt>PATH TO PROGRAME<gt>)
 
 Gets the version of a general GNU program. Returns undef if the application
 does not appear to be a GNU application. This function relies on certain
 conventions that the Free Software Foundation uses for printing the version of
 GNU applications. It may not work for all programs.
 
-=item $version = Get_Bzip2_Version($path_to_program)
+=item $version = get_bzip2_version($path_to_program)
 
 Gets the version of bzip2.
 
 =back
 
-=head1 AUTHOR
-
-David Coppit <david@coppit.org>.
-
-
 =head1 LICENSE
 
-This software is distributed under the terms of the GPL. See the file
-"LICENSE" for more information.
+This code is distributed under the GNU General Public License (GPL). See the
+file LICENSE in the distribution, http://www.opensource.org/gpl-license.html,
+and http://www.opensource.org/.
+
+=head1 AUTHOR
+
+David Coppit E<lt>david@coppit.orgE<gt>
+
+=head1 SEE ALSO
+
+L<Module::Install>
 
 =cut
-

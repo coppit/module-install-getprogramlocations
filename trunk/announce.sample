@@ -1,4 +1,4 @@
-Module::Install:GetProgramLocations 0.30 released
+Module::Install::GetProgramLocations 0.3000 released
 
 Description:
 - Module::Install::GetProgramLocations is a Module::Install extension that
@@ -7,9 +7,9 @@ Description:
 
 Download:
 - You can download the module from CPAN:
-  http://www.cpan.org/authors/id/D/DC/DCOPPIT/Module-Install-GetProgramLocations-0.30.tar.gz
+  http://www.cpan.org/authors/id/D/DC/DCOPPIT/Module-Install-GetProgramLocations-0.3000.tar.gz
 - Until the file propagates to the mirrors, you can use the following URL:
-  http://coppit.org/code/Module-Install-GetProgramLocations-0.30.tar.gz
+  http://coppit.org/code/Module-Install-GetProgramLocations-0.3000.tar.gz
 
 Changes:
 - Changed the semantics of non-interactive mode so that it always converts

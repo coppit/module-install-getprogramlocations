@@ -7,25 +7,25 @@ my $gpls = new Module::Install::GetProgramLocations;
 ok(defined $gpls, 'Module::Install::GetProgramLocations creation');
 
 #2
-ok($gpls->Version_Matches_Range('1.0.2', '[1.0,)'), 'Greater than minimum');
+ok($gpls->version_matches_range('1.0.2', '[1.0,)'), 'Greater than minimum');
 
 #3
-ok($gpls->Version_Matches_Range('1.0.2', '(,1.4)'), 'Less than maximum');
+ok($gpls->version_matches_range('1.0.2', '(,1.4)'), 'Less than maximum');
 
 #4
-ok(!$gpls->Version_Matches_Range('1.0.2', '(1.0.2,1.4)'), 'Not equal boundary');
+ok(!$gpls->version_matches_range('1.0.2', '(1.0.2,1.4)'), 'Not equal boundary');
 
 #5
-ok($gpls->Version_Matches_Range('1.0.2', '[1.0.2,1.4)'), 'Equal boundary');
+ok($gpls->version_matches_range('1.0.2', '[1.0.2,1.4)'), 'Equal boundary');
 
 #6
-ok($gpls->Version_Matches_Range('1.0.2', '[1.0,)'), 'Greater than minimum subversion');
+ok($gpls->version_matches_range('1.0.2', '[1.0,)'), 'Greater than minimum subversion');
 
 #7
-ok($gpls->Version_Matches_Range('1.0.2', '[0.5,0.8] (1.0,1.4)'), 'In second range');
+ok($gpls->version_matches_range('1.0.2', '[0.5,0.8] (1.0,1.4)'), 'In second range');
 
 #8
-ok(!$gpls->Version_Matches_Range('1.9.2', '[1,1.7], [1.8,1.9]'), 'Not in two ranges');
+ok(!$gpls->version_matches_range('1.9.2', '[1,1.7], [1.8,1.9]'), 'Not in two ranges');
 
 {
   my %info = (
@@ -37,7 +37,7 @@ ok(!$gpls->Version_Matches_Range('1.9.2', '[1,1.7], [1.8,1.9]'), 'Not in two ran
   );
 
   # 9
-  ok($gpls->Module::Install::GetProgramLocations::_Program_Version_Is_Valid(
+  ok($gpls->Module::Install::GetProgramLocations::_program_version_is_valid(
     'TestProgram','perl t/dummy_program.pl',\%info),
     'Check valid program version');
 }
@@ -52,7 +52,7 @@ ok(!$gpls->Version_Matches_Range('1.9.2', '[1,1.7], [1.8,1.9]'), 'Not in two ran
   );
 
   # 10
-  ok(!$gpls->Module::Install::GetProgramLocations::_Program_Version_Is_Valid(
+  ok(!$gpls->Module::Install::GetProgramLocations::_program_version_is_valid(
     'TestProgram','perl t/dummy_program.pl',\%info),
     'Check invalid program version');
 }
