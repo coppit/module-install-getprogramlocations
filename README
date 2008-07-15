@@ -8,8 +8,10 @@ is supplied, the version number of the program will also be checked.
 
 NEW IN THIS VERSION
 
-Version 0.3001: Mon Jun 6 2005
-- Fixed a bug in program type reporting
+Version 0.3002: Mon Jul 14 2008
+- Updated to the latest version of Module::Install
+- Removed auto-install for better compatibility with CPAN and others
+- Renamed methods to match Module::Install style
 
 
 MODULE DEPENDENCIES
@@ -21,8 +23,10 @@ To use this module, you will need to install:
 - Sort::Versions
 - Module::Install
 
-You should be prompted to install these modules automatically when you run
-"perl Makefile.PL".
+To test this module, you will need to install:
+
+- IO::CaptureOutput
+- Test::More
 
 
 INSTALLATION
@@ -50,7 +54,7 @@ example:
   use ext::Module::Install;
   ...
   %info = ...;
-  Get_Program_Locations(\%info);
+  %new_info = Get_Program_Locations(\%info);
 
 
 INSTALLATION PROBLEMS
@@ -74,7 +78,11 @@ Unix systems, you can also do "man Module::Install::GetProgramLocations".
 
 HOMEPAGE
 
-Visit http://coppit.org/code/ for the latest version.
+The CPAN Page:
+http://search.cpan.org/~dcoppit/Module-Install-CustomInstallationPath/
+
+The Google Code page:
+http://code.google.com/p/module-install-custominstallationpath/
 
 
 REPORTING BUGS
@@ -84,14 +92,15 @@ Send email to David Coppit <david@coppit.org>.
 
 COPYRIGHT
 
-Copyright (c) 2004 David Coppit. All rights reserved, save those granted by
-the license.
+Copyright (c) David Coppit. All rights reserved, save those granted by the
+license.
 
 
 LICENSE
 
-This code is distributed under the GNU General Public License (GPL).  See
-http://www.opensource.org/gpl-license.html and http://www.opensource.org/.
+This code is distributed under the GNU General Public License (GPL). See the
+file LICENSE in the distribution, http://www.opensource.org/gpl-license.html,
+and http://www.opensource.org/.
 
 
 AUTHOR
