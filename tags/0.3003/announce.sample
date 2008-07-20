@@ -1,0 +1,24 @@
+Module::Install::GetProgramLocations 0.3000 released
+
+Description:
+- Module::Install::GetProgramLocations is a Module::Install extension that
+  allows the user to interactively specify the location of programs needed by
+  the module to be installed
+
+Download:
+- You can download the module from CPAN:
+  http://www.cpan.org/authors/id/D/DC/DCOPPIT/Module-Install-GetProgramLocations-0.3000.tar.gz
+- Until the file propagates to the mirrors, you can use the following URL:
+  http://coppit.org/code/Module-Install-GetProgramLocations-0.3000.tar.gz
+
+Changes:
+- Changed the semantics of non-interactive mode so that it always converts
+  relative program names to absolute and validates them.
+- Removed Get_GNU_Grep_Version and others. (Just use Get_GNU_Version instead.)
+- Checks that the user provides an argname now.
+- Improved the documentation
+
+See the README for additional notes.
+
+Regards,
+David
