@@ -19,7 +19,7 @@ use Module::Install::Base;
               &get_bzip2_version
             );
 
-$VERSION = sprintf "%d.%02d%02d", q/0.30.2/ =~ /(\d+)/g;
+$VERSION = sprintf "%d.%02d%02d", q/0.30.3/ =~ /(\d+)/g;
 
 # ---------------------------------------------------------------------------
 
@@ -32,6 +32,16 @@ sub get_program_locations
   {
     croak "argname is required for $program"
       unless defined $info{$program}{'argname'};
+
+    if (exists $info{$program}{'types'}) {
+      foreach my $type (keys %{ $info{$program}{'types'} }) {
+        next unless exists $info{$program}{'types'}{$type}{'fetch'};
+
+        croak "Fetch routine must be a valid code reference"
+          unless ref $info{$program}{'types'}{$type}{'fetch'} eq "CODE" &&
+            defined &{ $info{$program}{'types'}{$type}{'fetch'} };
+      }
+    }
   }
 
   $self->include_deps('Config',0);
@@ -147,6 +157,9 @@ sub _prompt_user_for_program_locations
 {
   my $self = shift;
   my %info = %{ shift @_ };
+
+  # Force the include inc/Module/Install/Can.pm message to appear early
+  $self->can_run();
 
   print "Enter the full path, or \"none\" for none.\n";
 

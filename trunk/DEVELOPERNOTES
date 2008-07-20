@@ -7,7 +7,7 @@ $ svn co https://module-install-getprogramlocations.googlecode.com/svn/trunk/ Mo
 Checklist for a release:
 - Be sure to add new test cases for new features
 - Make sure version number increases.
-- Add version changes to README and CHANGES, anonymizing the notes in the README.
+- Add version changes to CHANGES
 - Add new module dependencies to Makefile.PL, and update README
 - Update MANIFEST and MANIFEST.SKIP if necessary.
   $ make distcheck
@@ -24,8 +24,6 @@ Checklist for a release:
   or
     cpan-upload Module-Install-GetProgramLocations-X.XX.tar.gz
 - Announce it to comp.lang.perl.announce
-- Copy current code to old in devel
-  $ rm -rf old; rsync -r --cvs-exclude --exclude=.svn * old
 - Check in code:
   $ svn commit
 - Tag the release for easy retrieval later
