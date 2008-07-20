@@ -1,3 +1,7 @@
+Version 0.3003: Sun Jul 20 2008
+- Fixed copy error in readme URLs
+- Added validation of fetch code references
+
 Version 0.3002: Mon Jul 14 2008
 - Updated to the latest version of Module::Install
 - Removed auto-install for better compatibility with CPAN and others
