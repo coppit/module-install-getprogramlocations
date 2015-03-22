@@ -71,7 +71,7 @@ Unix systems, you can also do "man Module::Install::GetProgramLocations".
 HOMEPAGE
 
 The CPAN Page:
-http://search.cpan.org/~dcoppit/Module-Install-GetProgramLocations/
+http://search.cpan.org/dist/Module-Install-GetProgramLocations/
 
 The Google Code page:
 http://code.google.com/p/module-install-getprogramlocations/

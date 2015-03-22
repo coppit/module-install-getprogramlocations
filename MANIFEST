@@ -9,8 +9,8 @@ lib/Module/Install/GetProgramLocations.pm
 
 # Tests
 t/basic.t
-t/versions.t
 t/dummy_program.pl
+t/versions.t
 
 # Module::Install extensions
 inc/Module/Install.pm
