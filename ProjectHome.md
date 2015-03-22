@@ -1,0 +1,1 @@
+This Module::Install extension interacts with the user during installation to determine the location of already installed programs that are needed by the module being installed. For example, this module can be used to locate GNU grep version 2.0 or better, and verify that the "grep" utility provided by the user is the correct version.
