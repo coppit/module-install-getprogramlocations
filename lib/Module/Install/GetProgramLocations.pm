@@ -1,7 +1,7 @@
 package Module::Install::GetProgramLocations;
 
 use strict;
-use 5.004;
+use 5.005;
 
 use Config;
 use Cwd;
@@ -585,7 +585,7 @@ The version number of the program.
 =back
 
 
-=item version_matches_range(E<lit>PROGRAM VERSIONE<gt>, E<lt>RANGEE<gt>);
+=item version_matches_range(E<lt>PROGRAM VERSIONE<gt>, E<lt>RANGEE<gt>);
 
 This function takes a program version string and a version ranges specification
 and returns true if the program version is in any of the ranges. For example
