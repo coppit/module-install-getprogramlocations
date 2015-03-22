@@ -1,8 +1,8 @@
 This file is not distributed with the module. It outlines some notes for
 developers readying a set of files for distribution.
 
-Subversion CHECKOUT:
-$ svn co https://module-install-getprogramlocations.googlecode.com/svn/trunk/ Module-Install-GetProgramLocations
+git checkout:
+$ git clone https://github.com/coppit/module-install-getprogramlocations.git
 
 Checklist for a release:
 - Be sure to add new test cases for new features
@@ -23,8 +23,7 @@ Checklist for a release:
     http://pause.perl.org/pause/authenquery
   or
     cpan-upload Module-Install-GetProgramLocations-X.XX.tar.gz
-- Announce it to comp.lang.perl.announce
-- Check in code:
-  $ svn commit
 - Tag the release for easy retrieval later
-  $ svn cp https://module-install-getprogramlocations.googlecode.com/svn/trunk https://module-install-getprogramlocations.googlecode.com/svn/tags/0.1040
+  $ git tag -a v0.3004 -m 'Version 0.3004'
+- Push changes to github:
+  $ git push
