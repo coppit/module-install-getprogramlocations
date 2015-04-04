@@ -1,0 +1,9 @@
+/blib/
+inc/
+/Makefile
+/META.*
+/MYMETA.*
+/pm_to_blib
+/Module-Install-GetProgramLocations-*.tar.gz
+/t/temp/
+**/*.swp
