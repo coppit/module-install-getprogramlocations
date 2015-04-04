@@ -3,6 +3,7 @@ LICENSE
 MANIFEST
 Makefile.PL
 README
+TODO
 
 # The module files
 lib/Module/Install/GetProgramLocations.pm
