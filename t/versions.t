@@ -41,7 +41,7 @@ ok(!$gpls->version_matches_range('1.9.2', '[1,1.7], [1.8,1.9]'), 'Not in two ran
 
   # 9
   ok($gpls->Module::Install::GetProgramLocations::_program_version_is_valid(
-    'TestProgram','$path_to_perl t/dummy_program.pl",\%info),
+    'TestProgram',"$path_to_perl t/dummy_program.pl",\%info),
     'Check valid program version');
 }
 
