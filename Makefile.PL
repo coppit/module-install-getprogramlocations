@@ -5,6 +5,8 @@ use inc::Module::Install;
 
 all_from('lib/Module/Install/GetProgramLocations.pm');
 
+githubmeta;
+
 requires(
   'File::Spec' => 0,
   'Cwd' => 0,
