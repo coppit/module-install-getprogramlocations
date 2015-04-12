@@ -6,6 +6,7 @@ use File::Slurp;
 
 all_from('lib/Module/Install/GetProgramLocations.pm');
 
+auto_set_bugtracker;
 githubmeta;
 
 include(

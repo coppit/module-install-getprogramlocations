@@ -68,7 +68,7 @@ Just "perldoc Module::Install::GetProgramLocations". After installation on
 Unix systems, you can also do "man Module::Install::GetProgramLocations".
 
 
-HOMEPAGE
+RESOURCES
 
 The CPAN Page:
 http://search.cpan.org/dist/Module-Install-GetProgramLocations/
@@ -76,10 +76,8 @@ http://search.cpan.org/dist/Module-Install-GetProgramLocations/
 The GitHub page:
 https://github.com/coppit/module-install-getprogramlocations/
 
-
-REPORTING BUGS
-
-https://github.com/coppit/module-install-getprogramlocations/issues
+Bug and feature tracking:
+http://rt.cpan.org/Public/Dist/Display.html?Name=Module-Install-GetProgramLocations
 
 
 COPYRIGHT

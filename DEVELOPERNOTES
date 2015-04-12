@@ -2,8 +2,7 @@ This file is not distributed with the module. It outlines some notes for
 developers readying a set of files for distribution.
 
 Check for any open issues:
-- https://rt.cpan.org/Dist/Display.html?Queue=Module-Install-GetProgramLocations
-- https://code.google.com/p/module-install-getprogramlocations/issues/list
+- https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Install-GetProgramLocations
 
 git checkout:
 $ git clone https://github.com/coppit/module-install-getprogramlocations.git
