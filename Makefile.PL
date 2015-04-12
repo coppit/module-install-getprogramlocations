@@ -18,4 +18,7 @@ test_requires(
   'Test::More' => 0,
 );
 
+license 'gpl2';
+auto_license(holder => 'David Coppit');
+
 WriteAll();
