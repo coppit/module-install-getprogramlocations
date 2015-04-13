@@ -1,4 +1,4 @@
-Version 0.3006:
+Version 0.3006: Sun Apr 12 2015
 - Enable verbose testing for CPAN-testers
 - Consolidate issue tracking at rt.cpan.org
 
