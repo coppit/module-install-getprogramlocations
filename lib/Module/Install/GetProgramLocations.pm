@@ -200,7 +200,7 @@ sub _prompt_user_for_program_locations
 
     my $choice = $self->prompt(
       "Where can I find your \"$program_name\" executable?" .
-      "$allowed_types" => $full_path);
+      "$allowed_types", $full_path);
 
     $program_info{$program_name} =
       { path => undef, type => undef, version => undef }, next
@@ -360,7 +360,6 @@ sub _Make_Absolute
 
 sub get_gnu_version
 {
-  my $self = shift;
   my $program = shift;
 
   die "Missing GNU program to get version for" unless defined $program;
@@ -392,7 +391,6 @@ sub get_gnu_version
 
 sub get_bzip2_version
 {
-  my $self = shift;
   my $program = shift;
 
   my $command = "$program --help 2>&1 1>" . File::Spec->devnull();
