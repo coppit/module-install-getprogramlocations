@@ -19,7 +19,7 @@ use Module::Install::Base;
               &get_bzip2_version
             );
 
-$VERSION = sprintf "%d.%02d%02d", q/0.30.7/ =~ /(\d+)/g;
+$VERSION = sprintf "%d.%02d%02d", q/0.30.8/ =~ /(\d+)/g;
 
 # ---------------------------------------------------------------------------
 
@@ -368,14 +368,14 @@ sub get_gnu_version
 
   # Newer versions
   {
-    my $command = "$program --version 2>" . File::Spec->devnull();
+    my $command = "\"$program\" --version 2>" . File::Spec->devnull();
     $version_message = `$command`;
   }
 
   # Older versions use -V
   unless($version_message =~ /\b(GNU|Free\s+Software\s+Foundation)\b/s)
   {
-    my $command = "$program -V 2>&1 1>" . File::Spec->devnull();
+    my $command = "\"$program\" -V 2>&1 1>" . File::Spec->devnull();
     $version_message = `$command`;
   }
 
@@ -393,7 +393,7 @@ sub get_bzip2_version
 {
   my $program = shift;
 
-  my $command = "$program --help 2>&1 1>" . File::Spec->devnull();
+  my $command = "\"$program\" --help 2>&1 1>" . File::Spec->devnull();
   my $version_message = `$command`;
 
   my ($program_version) = $version_message =~ /^.*?([\d]+\.[\d.a-z]+)/s;
