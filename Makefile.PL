@@ -13,6 +13,7 @@ auto_set_bugtracker;
 githubmeta;
 
 requires(
+  'Module::Install' => 0, 
   'File::Spec' => 0,
   'Cwd' => 0,
   'Sort::Versions' => 0,

@@ -1,5 +1,6 @@
 Version 0.3008:
 - Prevent CPAN from indexing private-lib
+- Add Module::Install requirement
 
 Version 0.3007: Mon Apr 20 2015
 - Clarify licensing terms
