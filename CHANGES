@@ -1,3 +1,6 @@
+Version 0.3009:
+- Add standard tests
+
 Version 0.3008: May 2 2015
 - Prevent CPAN from indexing private-lib
 - Add Module::Install requirement

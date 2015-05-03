@@ -379,7 +379,7 @@ sub get_gnu_version
     $version_message = `$command`;
   }
 
-  return undef unless
+  return undef unless ## no critic (ProhibitExplicitReturnUndef)
     $version_message =~ /\b(GNU|Free\s+Software\s+Foundation)\b/s;
 
   my ($program_version) = $version_message =~ /^.*?([\d]+\.[\d.a-z]+)/s;
