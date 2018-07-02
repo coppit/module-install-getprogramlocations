@@ -1,5 +1,7 @@
 Version 0.3009:
 - Add standard tests
+- Fix compatibility issue with newer versions of perl, which remove "." from
+  @INC.
 
 Version 0.3008: May 2 2015
 - Prevent CPAN from indexing private-lib
