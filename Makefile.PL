@@ -13,6 +13,11 @@ all_from('lib/Module/Install/GetProgramLocations.pm');
 auto_set_bugtracker;
 githubmeta;
 
+configure_requires(
+  # Module::Install::Bugtracker needs this
+  'URI::Escape' => 0,
+);
+
 requires(
   'Module::Install' => 0, 
   'File::Spec' => 0,
